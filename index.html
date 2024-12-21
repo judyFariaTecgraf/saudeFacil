@@ -1,6 +1,6 @@
 
 
-<!-- index.html -->
+<!-- index.html  -->
 <!DOCTYPE html>
         <html lang="pt-br">
         <head>
@@ -27,12 +27,12 @@
                             <div class="input_pesquisa">
                                 <div class="caixa_input">
                                     <input type="text" name="local" id="local" placeholder="Digite a localização">
-                                    <img src="img/icons/search_white.svg" alt="Pesquisar">
-                                    <button id="limparLocal">Limpar</button>
+                                    <img id="imgPesquisa" src="img/icons/search_white.svg" alt="Pesquisar">
+                                    <button style="display: none;" id="limparLocal">X</button>
                                 </div>                     
                             
                                 <div id="dropdown-localizacao" class="dropdown-localizacao">
-                                    <div id="use-user-geolocation" class="opcao-localizacao" onclick="usarGeolocalizacao()">
+                                    <div id="use-user-geolocation" class="opcao-localizacao">
                                         <img src="img/icons/my_location.svg" alt="">
                                         <p>Usar minha localização atual</p>
                                     </div>
@@ -43,57 +43,65 @@
                            
                         </div>
                         
-                        <form action="">
-                            <div class="multi_select">
-                                <div class="select_proced" onclick="NavController.showCheckboxes()">
-                                    <select> 
-                                        <option>Selecione procedimentos</option>
-                                    </select>
-                                    <div class="overSelect"></div> 
+                        <div class="form">
+                            <form action="">
+                                <div class="multi_select">
+                                    <div class="select_proced" onclick="NavController.showCheckboxes()">
+                                        <select> 
+                                            <option>Selecione procedimentos</option>
+                                        </select>
+                                        <div class="overSelect"></div> 
+                                    </div>
+                                    <div id="checkboxes">
+                                        <label for="procedimento1">
+                                            <input type="checkbox" name="procedimento" id="procedimento1">
+                                            P1
+                                        </label>
+            
+                                        <label for="procedimento2">
+                                            <input type="checkbox" name="procedimento" id="procedimento2">
+                                            P2
+                                        </label>
+            
+                                        <label for="procedimento4">
+                                            <input type="checkbox" name="procedimento" id="procedimento4">
+                                            P3
+                                        </label>
+                                    </div>
                                 </div>
-                                <div id="checkboxes">
-                                    <label for="procedimento1">
-                                        <input type="checkbox" name="procedimento" id="procedimento1">
-                                        P1
-                                    </label>
-        
-                                    <label for="procedimento2">
-                                        <input type="checkbox" name="procedimento" id="procedimento2">
-                                        P2
-                                    </label>
-        
-                                    <label for="procedimento3">
-                                        <input type="checkbox" name="procedimento" id="procedimento3">
-                                        P3
-                                    </label>
-                                </div>
-                            </div>
+                                
+                            </form>
                             
-                        </form>
+                            <button id="btnProc" onclick="MapController.buscarHospitais()">Buscar</button>
+                        </div>
                         
-                        <button id="btnProc" onclick="MapController.buscarHospitais()">BuscarProc</button>
                     </div>
+                    
+                    <div id="route-options" class="route-options-container">
+                        <!-- As opções de rota serão adicionadas aqui dinamicamente -->
+                    </div>
+
                     <div id="displayHospitaisEncontrados"></div>
                     
                 </nav>
             
                 <div id="main">
                 
-                    <section id="map"></section>
+                    <section id="map" aria-label="Mapa interativo para visualizar hospitais"></section>
                     
                     <footer>
                         <!-- <a href="">COMO USAR</a>
                         <a href="">EMERGÊNCIA</a>
                         <a href="">SOBRE NÓS</a> -->
 
-                        <button type="button" id="btnComoUsar" name="btnComoUsar" class="btnComoUsar fonte">COMO USAR</button> 
-                        <button type="button" id="btnEmergencia" name="btnEmergencia" class="btnEmergencia fonte">EMERGÊNCIA</button>
-                        <button type="button" id="btnSobreNos" name="btnSobreNos" class="btnSobreNos fonte">SOBRE NÓS</button>
+                        <button aria-label="Botão para acessar instruções de como usar o site" type="button" id="btnComoUsar" name="btnComoUsar" class="btnComoUsar fonte">COMO USAR</button> 
+                        <button aria-label="Botão para acessar números de emergência" type="button" id="btnEmergencia" name="btnEmergencia" class="btnEmergencia fonte">EMERGÊNCIA</button>
+                        <button aria-label="Botão para acessar informações sobre o projeto e as desenvolvedoras" type="button" id="btnSobreNos" name="btnSobreNos" class="btnSobreNos fonte">SOBRE NÓS</button>
                     </footer>
                 
                 </div>
 
-                <article id="comoUsar" class="popup" style="display: none;">
+                <article aria-label="Instruções de uso do site" id="comoUsar" class="popup" style="display: none;">
                     <div class="comousar-content">
                         <h2>Como Usar</h2>
                         <ul>
@@ -110,7 +118,7 @@
                 </article>
                 
 
-                <article id="emergencia" class="popup" style="display: none;">
+                <article aria-label="Números de emergência" id="emergencia" class="popup" style="display: none;">
                     <h1>Números de Emergências</h1>
 
                     <div id="emergencia-header">
@@ -148,7 +156,7 @@
 
                 </article>
 
-                <article id="sobreNos" class="popup" style="display: none;">
+                <article aria-label="Seção sobre o projeto e as desenvolvedoras" id="sobreNos" class="popup" style="display: none;">
                     <div class="sobreNos-header">
                         <h2>Sobre Nós</h2>
                         <p>O SaudeFacil.com foi desenvolvido com a missão de simplificar e otimizar a busca por hospitais e clínicas que realizam os procedimentos médicos desejados. Nosso foco é oferecer uma experiência prática e intuitiva, conectando você rapidamente às melhores opções de atendimento, economizando tempo e trazendo mais eficiência em momentos importantes.<br/><br/>
@@ -164,19 +172,19 @@
                         <h3>Desenvolvedoras</h3>
                         <div class="cards-desenvolvedoras">
                             <div class="desenvolvedora-card">
-                                <img src="img/Hanna.jpg" alt="Hanna">
+                                <img src="img/hanna.jpeg" alt="Hanna">
                                 <p>Hanna - <a href="https://github.com/HannaEpelboim" target="_blank">GitHub</a> | 
                                 <a href="https://br.linkedin.com/in/hanna-epelboim-assun%C3%A7%C3%A3o-037284257" target="_blank">LinkedIn</a></p>
                             </div>
                             <div class="desenvolvedora-card">
-                                <img src="img/Judy.jpg" alt="Judy">
-                                <p>Judy - <a href="https://github.com/Judy" target="_blank">GitHub</a> | 
-                                <a href="https://www.linkedin.com/in/Judy" target="_blank">LinkedIn</a></p>
+                                <img src="img/judy.jpeg" alt="Judy">
+                                <p>Judy - <a href="https://github.com/JudyFaria" target="_blank">GitHub</a> | 
+                                <a href="https://www.linkedin.com/in/judy-faria-480b6819b/" target="_blank">LinkedIn</a></p>
                             </div>
                             <div class="desenvolvedora-card">
-                                <img src="img/luisa.jpg" alt="Luísa">
-                                <p>Luísa - <a href="https://github.com/Luisa" target="_blank">GitHub</a> | 
-                                <a href="https://www.linkedin.com/in/Luisa" target="_blank">LinkedIn</a></p>
+                                <img src="img/luisa.jpg" alt="Luísa" class="luisa">
+                                <p>Luísa - <a href="https://github.com/LuisaSilveira" target="_blank">GitHub</a> | 
+                                <a href="https://www.linkedin.com/in/lu%C3%ADsa-silveira-340b26258/" target="_blank">LinkedIn</a></p>
                             </div>
                         </div>
                     </div>
@@ -208,20 +216,20 @@
                 <div id="overlay" class="overlay"></div>
            </div>
         
-            <!-- scripts -->
-            <!-- <script src="JS/testeIntegracao.js"></script> -->
-            <script src = "JS/model/MapModel.js"></script>
-            <script src="JS/model/navModel.js"></script>
-          
-            <script src = "JS/view/MapView.js"></script>
-            <script src="JS/view/navView.js"></script>
+    <!-- scripts -->
+    <!-- <script src="JS/testeIntegracao.js"></script> -->
+    <script src = "JS/model/MapModel.js"></script>
+    <script src="JS/model/navModel.js"></script>
+    
+    <script src = "JS/view/MapView.js"></script>
+    <script src="JS/view/navView.js"></script>
 
-            <script src = "JS/controller/MapController.js"></script>
-            <script src="JS/controller/navController.js"></script>
+    <script src = "JS/controller/MapController.js"></script>
+    <script src="JS/controller/navController.js"></script>
 
-            <script src = "JS/app.js"></script>
-            <script src="JS/popup.js"></script>
+    <script src = "JS/app.js"></script>
+    <script src="JS/popup.js"></script>
 
-             <!-- <script src="JS/teste.js"></script> -->
-        </body>
-        </html>
+        <!-- <script src="JS/teste.js"></script> -->
+</body>
+</html>

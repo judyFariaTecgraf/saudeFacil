@@ -260,12 +260,18 @@ html, body {
 }
 
 .desenvolvedora-card img {
-    width: 40%;
-    height: 65%;
+    width: 50%;
+    /* height: 65%; */
     object-fit: cover;
     border-radius: 50%;
     border: 0.2vw solid #ddd;
     margin-bottom: 5%;
+
+}
+
+.luisa{
+    width: 40%;
+    height: 65%;
 }
 
 .desenvolvedora-card p {
@@ -325,6 +331,55 @@ html, body {
     margin-top: 1%;
     font-size: 1.2vw;
 }
+
+.infowindow{
+    font-family: Arial, sans-serif;
+    padding: 10px;
+
+    h4{
+        margin: 0 0 10px 0;
+        color: #007bff;
+    }
+    
+
+   .btn_infoWindow{
+        margin-top: 5px;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;    
+
+        
+    }
+
+    #voltar{
+        width: 100%;
+        
+    }
+
+    .btn_infoWindow:hover {
+        background-color: #0056b3;
+    }
+
+    .modoRota{
+        background: none;
+        border: none;
+
+        
+    }
+
+    .modoRota:hover{
+        opacity: 0.5;
+    }
+}
+
+
+
+
+
+
 
 
 /* Desktop */
